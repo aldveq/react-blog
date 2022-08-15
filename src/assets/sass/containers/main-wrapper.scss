@@ -1,5 +1,11 @@
 .main-wrapper {
-	width: 100%;
+	width: 85%;
 	margin: 0 auto;
 	max-width: 1180px;
+
+	p {
+		color: $primary-brand-color;
+		letter-spacing: 0.5px;
+		line-height: 30px;
+	}
 }

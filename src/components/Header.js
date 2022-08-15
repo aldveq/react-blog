@@ -4,15 +4,21 @@ import MainWrapper from "../containers/MainWrapper";
 
 const Header = () => {
 	return (
-		<MainWrapper>
-			<nav>
+		<nav className="nav-wrapper">
+			<MainWrapper>
 				<ul>
-					<Link to='/'>Home</Link>
-					<Link to='/about'>About</Link>
-					<Link to='/articles'>Articles</Link>
+					<li>
+						<Link to='/' title="Home">Home</Link>
+					</li>
+					<li>
+						<Link to='/about' title="About">About</Link>
+					</li>
+					<li>
+						<Link to='/articles' title="About">Articles</Link>
+					</li>
 				</ul>
-			</nav>
-		</MainWrapper>
+			</MainWrapper>
+		</nav>
 	)
 }
 

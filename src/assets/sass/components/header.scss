@@ -1,0 +1,24 @@
+.nav-wrapper {
+	padding: 40px 0;
+	border-bottom: 4px solid $primary-brand-color;
+	margin-bottom: 40px;
+
+	ul {
+		padding: 0;
+		margin: 0;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}	
+
+	ul li {
+		list-style: none;
+		margin: 0 22px;
+	}
+
+	ul li a {
+		text-decoration: none;
+		color: $primary-brand-color;
+		font-weight: bold;
+	}
+}
