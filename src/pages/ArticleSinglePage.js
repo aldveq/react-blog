@@ -1,11 +1,14 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import MainWrapper from "../containers/MainWrapper";
 
 const ArticleSinglePage = () => {
 	const { name } = useParams();
 
 	return (
-		<h1>Article name: { name }</h1>
+		<MainWrapper>
+			<h1>Article name: { name }</h1>
+		</MainWrapper>
 	);
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HomePage, AboutPage, ArticlesPage, ArticleSinglePage, NotFoundPage } from './pages';
 import { Header } from "./components";
-import './App.css';
+import './assets/sass/index.scss';
 
 const App = () => {
   return (

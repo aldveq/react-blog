@@ -1,8 +1,11 @@
 import React from "react";
+import MainWrapper from "../containers/MainWrapper";
 
 const NotFoundPage = () => {
 	return (
-		<h1>Sorry, resource not found!</h1>
+		<MainWrapper>
+			<h1>Sorry, resource not found!</h1>
+		</MainWrapper>
 	)
 }
 

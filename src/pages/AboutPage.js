@@ -1,8 +1,11 @@
 import React from "react";
+import MainWrapper from "../containers/MainWrapper";
 
 const AboutPage = () => {
 	return (
-		<h1>AboutPage</h1>
+		<MainWrapper>
+			<h1>AboutPage</h1>
+		</MainWrapper>
 	);
 }
 

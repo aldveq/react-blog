@@ -1,8 +1,11 @@
 import React from "react";
+import MainWrapper from "../containers/MainWrapper";
 
 const HomePage = () => {
 	return (
-		<h1>Home Page</h1>
+		<MainWrapper>
+			<h1>Home Page</h1>
+		</MainWrapper>
 	);
 }
 
