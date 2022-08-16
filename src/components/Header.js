@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import MainWrapper from "../containers/MainWrapper";
 
 const Header = () => {
@@ -8,13 +8,13 @@ const Header = () => {
 			<MainWrapper>
 				<ul>
 					<li>
-						<Link to='/' title="Home">Home</Link>
+						<NavLink to='/' title="Home">Home</NavLink>
 					</li>
 					<li>
-						<Link to='/about' title="About">About</Link>
+						<NavLink to='/about' title="About">About</NavLink>
 					</li>
 					<li>
-						<Link to='/articles' title="About">Articles</Link>
+						<NavLink to='/articles' title="About">Articles</NavLink>
 					</li>
 				</ul>
 			</MainWrapper>

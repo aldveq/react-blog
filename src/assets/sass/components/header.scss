@@ -20,5 +20,12 @@
 		text-decoration: none;
 		color: $primary-brand-color;
 		font-weight: bold;
+		padding: 8px;
+		transition: all ease 0.2s;
+
+		&.active {
+			background-color: $primary-brand-color;
+			color: $color-white;
+		}
 	}
 }
