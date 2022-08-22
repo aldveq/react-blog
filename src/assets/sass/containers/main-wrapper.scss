@@ -2,6 +2,11 @@
 	width: 85%;
 	margin: 0 auto;
 	max-width: 1180px;
+	padding-top: 120px;
+
+	&--header {
+		padding-top: 0;
+	}
 
 	p {
 		color: $primary-brand-color;

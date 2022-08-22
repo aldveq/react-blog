@@ -4,7 +4,7 @@ import { Title } from "../components";
 
 const NotFoundPage = () => {
 	return (
-		<MainWrapper>
+		<MainWrapper type='body'>
 			<div className="not-found-page-wrapper">
 				<Title text='Sorry, resource not found 😭!' type='main' />
 			</div>

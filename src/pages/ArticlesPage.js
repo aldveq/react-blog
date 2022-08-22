@@ -6,7 +6,7 @@ import { blogData } from "../blog-data";
 
 const ArticlesPage = () => {
 	return (
-		<MainWrapper>
+		<MainWrapper type='body'>
 			<Title text='Articles' type='main' />
 			<PostsWrapper blogData={blogData} />
 		</MainWrapper>

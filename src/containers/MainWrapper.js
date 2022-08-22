@@ -1,8 +1,9 @@
 import React from 'react';
 
-const MainWrapper = ({ children }) => {
+const MainWrapper = ({ children, type }) => {
+	const isMainWrapperHeader = type === 'header' && 'main-wrapper--header';
 	return (
-		<div className='main-wrapper'>{children}</div>
+		<div className={`main-wrapper ${isMainWrapperHeader}`} >{children}</div>
 	)
 }
 

@@ -1,7 +1,11 @@
 .nav-wrapper {
+	width: 100%;
 	padding: 40px 0;
+	background-color: $color-white;
 	border-bottom: 4px solid $primary-brand-color;
-	margin-bottom: 40px;
+	position: fixed;
+	top: 0;
+	left: 0;
 
 	ul {
 		padding: 0;

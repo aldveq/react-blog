@@ -14,9 +14,10 @@ const ArticleSinglePage = () => {
 	if ( blogSingleData === undefined || blogSingleData === null ) return <NotFoundPage/>
 
 	return (
-		<MainWrapper>
+		<MainWrapper type='body'>
 			<Title text={blogSingleData.title} type='main' />
 			<p>{blogSingleData.content}</p>
+			<br />
 			<Title text='More Articles' type='secondary' />
 			<PostsWrapper blogData={moreArticles} />
 		</MainWrapper>

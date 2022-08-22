@@ -5,7 +5,7 @@ import MainWrapper from "../containers/MainWrapper";
 const Header = () => {
 	return (
 		<nav className="nav-wrapper">
-			<MainWrapper>
+			<MainWrapper type='header'>
 				<ul>
 					<li>
 						<NavLink to='/' title="Home">Home</NavLink>
