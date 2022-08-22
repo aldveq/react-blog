@@ -2,8 +2,9 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import MainWrapper from "../containers/MainWrapper";
 import PostsWrapper from "../containers/PostsWrapper";
-import { blogData } from "../blog-data";
 import NotFoundPage from "./NotFoundPage";
+import { Title } from "../components";
+import { blogData } from "../blog-data";
 
 const ArticleSinglePage = () => {
 	const { name } = useParams();
@@ -14,9 +15,9 @@ const ArticleSinglePage = () => {
 
 	return (
 		<MainWrapper>
-			<h1>{blogSingleData.title}</h1>
+			<Title text={blogSingleData.title} type='main' />
 			<p>{blogSingleData.content}</p>
-			<h2>More Articles</h2>
+			<Title text='More Articles' type='secondary' />
 			<PostsWrapper blogData={moreArticles} />
 		</MainWrapper>
 	);

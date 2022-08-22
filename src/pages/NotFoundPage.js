@@ -1,11 +1,12 @@
 import React from "react";
 import MainWrapper from "../containers/MainWrapper";
+import { Title } from "../components";
 
 const NotFoundPage = () => {
 	return (
 		<MainWrapper>
 			<div className="not-found-page-wrapper">
-				<h1>Sorry, resource not found 😭!</h1>
+				<Title text='Sorry, resource not found 😭!' type='main' />
 			</div>
 		</MainWrapper>
 	)

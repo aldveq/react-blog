@@ -1,3 +1,8 @@
 .not-found-page-wrapper {
 	text-align: center;
+
+	h1, h2 {
+		display: table;
+		margin: 0 auto;
+	}
 }
