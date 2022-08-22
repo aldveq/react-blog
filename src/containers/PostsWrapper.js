@@ -1,8 +1,7 @@
 import React from "react";
 import { PostItem } from '../components';
-import { blogData } from '../blog-data';
 
-const PostsWrapper = () => {
+const PostsWrapper = ({blogData}) => {
 	
 	const drawBlogData = () => {
 		return (

@@ -10,7 +10,7 @@
 
 	&__item {
 		background-color: $primary-brand-color;
-		padding: 20px;
+		padding: 30px 20px;
 		margin-bottom: 20px;
 
 		@media only screen and (min-width: 1024px) {
@@ -22,6 +22,7 @@
 		}
 
 		h3 {
+			margin-top: 0;
 			font-weight: bold;
 		}
 	}
