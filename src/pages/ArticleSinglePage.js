@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import MainWrapper from "../containers/MainWrapper";
 import PostsWrapper from "../containers/PostsWrapper";
 import NotFoundPage from "./NotFoundPage";
-import { Title, CommentsList } from "../components";
+import { Title, CommentsList, UpvoteCounter } from "../components";
 import { blogData } from "../blog-data";
 
 const ArticleSinglePage = () => {
@@ -42,9 +42,9 @@ const ArticleSinglePage = () => {
 	return (
 		<MainWrapper type='body'>
 			<Title text={blogSingleData.title} type='main' />
-			<p>This post has been upvoted {postData.upvotes} times!</p>
-			<p>{blogSingleData.content}</p>
-			{ postData.comments.length > 0 ? drawComments() : null }
+			{ parseInt(postData.upvotes) !== 0 ? <UpvoteCounter upvotes={postData.upvotes} postName={name} setPostData={setPostData} /> : null }
+			<p>{blogSingleData?.content}</p>
+			{ postData?.comments.length > 0 ? drawComments() : null }
 			<br />
 			<Title text='More Articles' type='secondary' />
 			<PostsWrapper blogData={moreArticles} />

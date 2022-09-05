@@ -1,0 +1,20 @@
+.upvote-counter-wrapper {
+	display: flex;
+	align-items: center;
+	margin-bottom: 50px;
+
+	button {
+		margin-left: 32px;
+		border: none;
+		background-color: $primary-brand-color;
+		color: $color-white;
+		padding: 12px 32px;
+		line-height: 12px;
+		cursor: pointer;
+		max-height: 34px;
+
+		&:active {
+			transform: scale(0.9);
+		}
+	}
+}
