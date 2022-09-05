@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import MainWrapper from "../containers/MainWrapper";
 import PostsWrapper from "../containers/PostsWrapper";
 import NotFoundPage from "./NotFoundPage";
-import { Title } from "../components";
+import { Title, CommentsList } from "../components";
 import { blogData } from "../blog-data";
 
 const ArticleSinglePage = () => {
@@ -26,6 +26,15 @@ const ArticleSinglePage = () => {
 		fetchPostData();
 	}, [name]);
 
+	const drawComments = () => (
+		<>
+			<br />
+			<Title text='Comments' type='secondary' />
+			<CommentsList comments={postData.comments} />
+		</>
+	);
+	
+
 	if (loader) return <MainWrapper type='body'> <h3>Loading...</h3> </MainWrapper>
 
 	if ( blogSingleData === undefined || blogSingleData === null ) return <NotFoundPage/>
@@ -35,6 +44,7 @@ const ArticleSinglePage = () => {
 			<Title text={blogSingleData.title} type='main' />
 			<p>This post has been upvoted {postData.upvotes} times!</p>
 			<p>{blogSingleData.content}</p>
+			{ postData.comments.length > 0 ? drawComments() : null }
 			<br />
 			<Title text='More Articles' type='secondary' />
 			<PostsWrapper blogData={moreArticles} />
