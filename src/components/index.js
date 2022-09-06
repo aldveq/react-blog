@@ -4,3 +4,4 @@ export { default as Title } from './Title';
 export { default as CommentsList } from './CommentsList';
 export { default as CommentItem } from './CommentItem';
 export { default as UpvoteCounter } from './UpvoteCounter';
+export { default as AddCommentForm } from './AddCommentForm';

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import MainWrapper from "../containers/MainWrapper";
 import PostsWrapper from "../containers/PostsWrapper";
 import NotFoundPage from "./NotFoundPage";
-import { Title, CommentsList, UpvoteCounter } from "../components";
+import { Title, CommentsList, UpvoteCounter, AddCommentForm } from "../components";
 import { blogData } from "../blog-data";
 
 const ArticleSinglePage = () => {
@@ -30,7 +30,7 @@ const ArticleSinglePage = () => {
 		<>
 			<br />
 			<Title text='Comments' type='secondary' />
-			<CommentsList comments={postData.comments} />
+			<CommentsList comments={postData.comments} postName={name} setPostData={setPostData} />
 		</>
 	);
 	
@@ -45,6 +45,7 @@ const ArticleSinglePage = () => {
 			{ parseInt(postData.upvotes) !== 0 ? <UpvoteCounter upvotes={postData.upvotes} postName={name} setPostData={setPostData} /> : null }
 			<p>{blogSingleData?.content}</p>
 			{ postData?.comments.length > 0 ? drawComments() : null }
+			<AddCommentForm postName={name} setPostData={setPostData}/>
 			<br />
 			<Title text='More Articles' type='secondary' />
 			<PostsWrapper blogData={moreArticles} />

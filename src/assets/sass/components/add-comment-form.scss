@@ -1,0 +1,36 @@
+.add-comment-form {
+	max-width: 350px;
+	margin-bottom: 40px;
+
+	&__form-group {
+		margin-bottom: 16px;
+
+		label, input, textarea {
+			display: block;
+			width: 100%;
+		}
+
+		label {
+			margin-bottom: 8px;
+		}
+
+		input, textarea {
+			padding: 12px;
+			box-sizing: border-box;
+		}
+	}
+
+	button[type="submit"] {
+		display: block;
+		width: 100%;
+		border: none;
+		background-color: $primary-brand-color;
+		color: $color-white;
+		padding: 14px;
+		cursor: pointer;
+
+		&:active {
+			transform: scale(0.9);
+		}
+	}
+}
