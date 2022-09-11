@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import MainWrapper from "../containers/MainWrapper";
 import PostsWrapper from "../containers/PostsWrapper";
 import NotFoundPage from "./NotFoundPage";
-import { Title, CommentsList, UpvoteCounter, AddCommentForm } from "../components";
+import { Title, CommentsList, UpvoteCounter, AddCommentForm, GoBack } from "../components";
 
 const ArticleSinglePage = () => {
 	const { name } = useParams();
@@ -45,6 +45,7 @@ const ArticleSinglePage = () => {
 
 	return (
 		<MainWrapper type='body'>
+			<GoBack/>
 			{ postData?.title !== '' ? <Title text={postData?.title} type='main' /> : null }
 			{ parseInt(postData?.upvotes) !== 0 ? <UpvoteCounter upvotes={postData?.upvotes} postName={name} setPostData={setPostData} /> : null }
 			{ postData?.content !== '' ? <p>{postData?.content}</p> : null }

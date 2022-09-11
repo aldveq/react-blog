@@ -1,0 +1,20 @@
+.go-back-wrapper {
+	margin: 30px 0 60px;
+
+	&__go-back-btn {
+		text-decoration: none;
+		color: $primary-brand-color;
+		font-weight: bold;
+
+		&::before {
+			content: '\2190';
+			width: 10px;
+			height: 10px;
+			background-color: $primary-brand-color;
+			color: $color-white;
+			margin-right: 12px;
+			border-radius: 28%;
+			padding: 8px;
+		}
+	}
+}
