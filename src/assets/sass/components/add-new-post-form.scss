@@ -1,0 +1,30 @@
+.add-new-post-form-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding-top: 60px;
+
+	&__btns-wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		button[type="submit"],
+		button {
+			width: 50%;
+		}
+	}
+
+	&__cancel-btn {
+		border: none;
+		background-color: $fourth-brand-color;
+		color: $color-white;
+		padding: 14px;
+		cursor: pointer;
+
+		&:active {
+			transform: scale(0.9);
+		}
+	}
+}

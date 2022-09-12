@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MainWrapper from "../containers/MainWrapper";
 import PostsWrapper from "../containers/PostsWrapper";
-import { Title, AddNewPostBtn } from "../components";
+import { Title, AddNewPostBtn, AddNewPostForm } from "../components";
 
 const ArticlesPage = () => {
 	const [blogData, setBlogData] = useState([]);
@@ -17,13 +17,13 @@ const ArticlesPage = () => {
 			setLoader(false);
 		}
 		getBlogData();
-	}, []);
+	}, [isNewPostFormLoaded]);
 
 	if (loader)
 		return <MainWrapper type='body'> <h3>Loading...</h3> </MainWrapper>
 	
 	if(isNewPostFormLoaded)
-		return <MainWrapper> <h3>New post form</h3> </MainWrapper>
+		return <MainWrapper> <AddNewPostForm setNewPostForm={setIsNewPostFormLoaded} /> </MainWrapper>
 
 	return (
 		<MainWrapper type='body'>
