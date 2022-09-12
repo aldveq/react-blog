@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import MainWrapper from "../containers/MainWrapper";
 import PostsWrapper from "../containers/PostsWrapper";
-import { Title } from "../components";
+import { Title, AddNewPostBtn } from "../components";
 
 const ArticlesPage = () => {
 	const [blogData, setBlogData] = useState([]);
 	const [loader, setLoader] = useState(false);
+	const [isNewPostFormLoaded, setIsNewPostFormLoaded] = useState(false);
 
 	useEffect(() => {
 		const getBlogData = async () => {
@@ -20,14 +21,22 @@ const ArticlesPage = () => {
 
 	if (loader)
 		return <MainWrapper type='body'> <h3>Loading...</h3> </MainWrapper>
+	
+	if(isNewPostFormLoaded)
+		return <MainWrapper> <h3>New post form</h3> </MainWrapper>
 
 	return (
-		blogData !== undefined && blogData.length > 0 ? 
-			<MainWrapper type='body'>
-				<Title text='Articles' type='main' />
-				<PostsWrapper blogData={blogData} />
-			</MainWrapper> 
-		: null 
+		<MainWrapper type='body'>
+			<AddNewPostBtn setNewPostForm={setIsNewPostFormLoaded} />
+			{
+				blogData !== undefined && blogData.length > 0 ? 
+					<>
+						<Title text='Articles' type='main' />
+						<PostsWrapper blogData={blogData} />
+					</>
+				: <h2>Data not available!</h2>
+			}
+		</MainWrapper>
 	);
 }
 
