@@ -47,7 +47,7 @@ const ArticleSinglePage = () => {
 		<MainWrapper type='body'>
 			<GoBack/>
 			{ postData?.title !== '' ? <Title text={postData?.title} type='main' /> : null }
-			{ parseInt(postData?.upvotes) !== 0 ? <UpvoteCounter upvotes={postData?.upvotes} postName={name} setPostData={setPostData} /> : null }
+			<UpvoteCounter upvotes={postData?.upvotes} postName={name} setPostData={setPostData} />
 			{ postData?.content !== '' ? <p>{postData?.content}</p> : null }
 			{ postData?.comments.length > 0 ? drawComments() : null }
 			<AddCommentForm postName={name} setPostData={setPostData}/>
