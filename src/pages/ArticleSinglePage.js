@@ -15,13 +15,13 @@ const ArticleSinglePage = () => {
 	useEffect(() => {
 		const fetchPostData = async () => {
 			setLoader(true);
+
+			const [postDataFromServer, data] = await Promise.all([fetch(`/api/posts/${name}`), fetch('/api/posts')]);
 			
-			const postDataFromServer = await fetch(`/api/posts/${name}`);
 			const jsonPostDataFromServer = await postDataFromServer.json();
 			const { upvotes, comments, title, content } = jsonPostDataFromServer;
 			setPostData({ upvotes, comments, title, content });
 
-			const data = await fetch('/api/posts');
 			const jsonData = await data.json();
 			const moreArticles = jsonData.filter(jData => jData.name !== name);
 			setBlogData(moreArticles);
