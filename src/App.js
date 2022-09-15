@@ -9,10 +9,12 @@ const App = () => {
 	<Router>
 		<Header/>
 		<Routes>
-			<Route path="/" element={ <HomePage/> } /> 
-			<Route path="/about" element={ <AboutPage/> } />
-			<Route path="/articles" element={ <ArticlesPage/> } /> 
-			<Route path="/article/:name" element={ <ArticleSinglePage/> } />
+			<Route index element={ <HomePage/> } /> 
+			<Route path="about" element={ <AboutPage/> } />
+			<Route path="articles">
+				<Route index element={ <ArticlesPage/> } />
+				<Route path=":name" element={ <ArticleSinglePage/> } />
+			</Route> 
 			<Route path="*" element={ <NotFoundPage/> } />
 		</Routes>
 	</Router>
