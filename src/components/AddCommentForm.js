@@ -1,27 +1,29 @@
 import React from "react";
-import { useState } from "react";
+import { useInput } from "../hooks";
 
 const AddCommentForm = ({postName, setPostData}) => {
-	const [formData, setFormData] = useState({user: '', comment:''});
+	const [user, setUser] = useInput('');
+	const [comment, setComment] = useInput('');
 
 	const addComment = async (e) => {
 		e.preventDefault();
 
-		if (formData.user === '' || formData.comment === '') {
+		if (user?.value === '' || comment?.value === '') {
 			alert('Please, fill out the inputs!');
 			return;
 		}
 
 		const result = await fetch(`/api/posts/${postName}/add-comment`, {
 			method: 'post', 
-			body: JSON.stringify(formData), 
+			body: JSON.stringify({user: user?.value, comment: comment?.value}), 
 			headers: {
 				'Content-Type': 'application/json'
 			}
 		});
 		const resultJson = await result.json();
 		setPostData(resultJson);
-		setFormData({user: '', comment:''});
+		setUser('');
+		setComment('');
 	}
 
 	return (
@@ -29,11 +31,20 @@ const AddCommentForm = ({postName, setPostData}) => {
 			<h3>Add a new comment!</h3>
 			<div className="add-comment-form__form-group">
 				<label htmlFor="user">User</label>
-				<input type="text" id="user" value={formData.user} onChange={e => setFormData({user: e.target.value, comment: formData.comment})}/>
+				<input 
+					type="text" 
+					id="user" 
+					{...user}
+				/>
 			</div>
 			<div className="add-comment-form__form-group">
 				<label htmlFor="comment">Comment</label>
-				<textarea id="comment" cols="30" rows="10" value={formData.comment} onChange={e => setFormData({user: formData.user, comment: e.target.value})}></textarea>
+				<textarea 
+					id="comment" 
+					cols="30" 
+					rows="10" 
+					{...comment}
+				></textarea>
 			</div>
 			<button type="submit">Add comment</button>
 		</form>
