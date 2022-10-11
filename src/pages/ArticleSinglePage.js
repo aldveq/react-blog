@@ -10,6 +10,7 @@ const ArticleSinglePage = () => {
 
 	const [blogData, setBlogData] = useState([]);
 	const [postData, setPostData] = useState({ upvotes: 0, comments: [], title: '', content: '' });
+	const [postNotFound, setPostNotFound] = useState(false);
 	const [loader, setLoader] = useState(true);
 
 	useEffect(() => {
@@ -17,6 +18,12 @@ const ArticleSinglePage = () => {
 			const [postDataFromServer, data] = await Promise.all([fetch(`/api/posts/${name}`), fetch('/api/posts')]);
 			
 			const jsonPostDataFromServer = await postDataFromServer.json();
+
+			if ( jsonPostDataFromServer === null || jsonPostDataFromServer === undefined ) {
+				setPostNotFound(true);
+				return;
+			}
+
 			const { upvotes, comments, title, content } = jsonPostDataFromServer;
 			setPostData({ upvotes, comments, title, content });
 
@@ -37,7 +44,9 @@ const ArticleSinglePage = () => {
 		</>
 	);
 	
-	if (loader) return <MainWrapper type='body'> <h3>Loading...</h3> </MainWrapper>
+	if ( postNotFound ) return <NotFoundPage/>
+
+	if ( loader ) return <MainWrapper type='body'> <h3>Loading...</h3> </MainWrapper>
 
 	if ( postData === undefined || postData === null ) return <NotFoundPage/>
 
