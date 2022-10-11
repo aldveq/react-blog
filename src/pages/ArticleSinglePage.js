@@ -10,12 +10,10 @@ const ArticleSinglePage = () => {
 
 	const [blogData, setBlogData] = useState([]);
 	const [postData, setPostData] = useState({ upvotes: 0, comments: [], title: '', content: '' });
-	const [loader, setLoader] = useState(false);
+	const [loader, setLoader] = useState(true);
 
 	useEffect(() => {
 		const fetchPostData = async () => {
-			setLoader(true);
-
 			const [postDataFromServer, data] = await Promise.all([fetch(`/api/posts/${name}`), fetch('/api/posts')]);
 			
 			const jsonPostDataFromServer = await postDataFromServer.json();

@@ -5,12 +5,11 @@ import { Title, AddNewPostBtn, AddNewPostForm } from "../components";
 
 const ArticlesPage = () => {
 	const [blogData, setBlogData] = useState([]);
-	const [loader, setLoader] = useState(false);
+	const [loader, setLoader] = useState(true);
 	const [isNewPostFormLoaded, setIsNewPostFormLoaded] = useState(false);
 
 	useEffect(() => {
 		const getBlogData = async () => {
-			setLoader(true);
 			const data = await fetch('/api/posts');
 			const jsonData = await data.json();
 			setBlogData(jsonData);
