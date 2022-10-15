@@ -3,7 +3,7 @@ import React from "react";
 const UpvoteCounter = ({upvotes, postName, setPostData}) => {
 
 	const addUpvote = async () => {
-		const result = await fetch(`/api/posts/${postName}/upvote`, {method: 'post'});
+		const result = await fetch(`/api/posts/${postName}/upvote`, {method: 'put'});
 		const jsonResult = await result.json();
 		setPostData(jsonResult);
 	}
