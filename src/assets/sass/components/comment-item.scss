@@ -1,6 +1,12 @@
 .comment-item {
 	margin-bottom: 32px;
+	max-width: 300px;
+	
 	p {
 		margin: 0 0 6px;
+	}
+
+	i {
+		line-height: 28px;
 	}
 }
