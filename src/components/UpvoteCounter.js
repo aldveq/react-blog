@@ -10,7 +10,7 @@ const UpvoteCounter = ({upvotes, postName, setPostData}) => {
 
 	return (
 		<div className="upvote-counter-wrapper">
-			<p>This post has been upvoted <strong>{upvotes}</strong> times!</p>
+			<p>This post has <strong>{upvotes}</strong> upvote(s)!</p>
 			<button onClick={addUpvote}>Add upvote</button>
 		</div>
 	);
