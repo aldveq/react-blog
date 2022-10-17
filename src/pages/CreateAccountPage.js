@@ -1,10 +1,10 @@
 import MainWrapper from "../containers/MainWrapper";
-import { Title } from "../components";
+import { SignUpForm } from "../components";
 
 const CreateAccountPage = () => {
 	return (
 		<MainWrapper type='body'>
-			<Title text='Create Account Page'/>
+			<SignUpForm />
 		</MainWrapper>
 	);
 }
