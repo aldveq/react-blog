@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import MainWrapper from "../containers/MainWrapper";
 import PostsWrapper from "../containers/PostsWrapper";
 import { Title, AddNewPostBtn, AddNewPostForm } from "../components";
+import { useUser } from "../hooks";
 
 const ArticlesPage = () => {
 	const [blogData, setBlogData] = useState([]);
 	const [loader, setLoader] = useState(true);
 	const [isNewPostFormLoaded, setIsNewPostFormLoaded] = useState(false);
+
+	const { user } = useUser();
 
 	useEffect(() => {
 		const getBlogData = async () => {
@@ -26,7 +29,7 @@ const ArticlesPage = () => {
 
 	return (
 		<MainWrapper type='body'>
-			<AddNewPostBtn setNewPostForm={setIsNewPostFormLoaded} />
+			{ user && <AddNewPostBtn setNewPostForm={setIsNewPostFormLoaded} /> }
 			{
 				blogData !== undefined && blogData.length > 0 ? 
 					<>

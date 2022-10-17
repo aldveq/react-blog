@@ -4,6 +4,7 @@ import MainWrapper from "../containers/MainWrapper";
 import PostsWrapper from "../containers/PostsWrapper";
 import NotFoundPage from "./NotFoundPage";
 import { Title, CommentsList, UpvoteCounter, AddCommentForm, GoBack } from "../components";
+import { useUser } from "../hooks";
 
 const ArticleSinglePage = () => {
 	const { name } = useParams();
@@ -12,6 +13,8 @@ const ArticleSinglePage = () => {
 	const [postData, setPostData] = useState({ upvotes: 0, comments: [], title: '', content: '' });
 	const [postNotFound, setPostNotFound] = useState(false);
 	const [loader, setLoader] = useState(true);
+
+	const { user } = useUser();
 
 	useEffect(() => {
 		const fetchPostData = async () => {
@@ -57,7 +60,7 @@ const ArticleSinglePage = () => {
 			<UpvoteCounter upvotes={postData?.upvotes} postName={name} setPostData={setPostData} />
 			{ postData?.content !== '' ? <p>{postData?.content}</p> : null }
 			{ postData?.comments.length > 0 ? drawComments() : null }
-			<AddCommentForm postName={name} setPostData={setPostData}/>
+			{ user && <AddCommentForm postName={name} setPostData={setPostData}/> }
 			<br />
 			<Title text='More Articles' type='secondary' />
 			{ blogData !== undefined && blogData.length > 0 ? <PostsWrapper blogData={blogData} /> : null }
