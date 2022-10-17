@@ -16,6 +16,12 @@ const Header = () => {
 					<li>
 						<NavLink to='/articles' title="About">Articles</NavLink>
 					</li>
+					<li>
+						<NavLink to='/login' title="Login">Login</NavLink>
+					</li>
+					<li>
+						<NavLink to='/create-account' title="Login">Sign Up</NavLink>
+					</li>
 				</ul>
 			</MainWrapper>
 		</nav>

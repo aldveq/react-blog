@@ -8,3 +8,4 @@ export { default as AddCommentForm } from './AddCommentForm';
 export { default as GoBack } from './GoBack';
 export { default as AddNewPostBtn } from './AddNewPostBtn';
 export { default as AddNewPostForm } from './AddNewPostForm';
+export { default as LoginForm } from './LoginForm';

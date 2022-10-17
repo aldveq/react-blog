@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { HomePage, AboutPage, ArticlesPage, ArticleSinglePage, NotFoundPage } from './pages';
+import { HomePage, AboutPage, ArticlesPage, ArticleSinglePage, NotFoundPage, LoginPage, CreateAccountPage } from './pages';
 import { Header } from "./components";
 import './assets/sass/index.scss';
 
@@ -14,7 +14,9 @@ const App = () => {
 			<Route path="articles">
 				<Route index element={ <ArticlesPage/> } />
 				<Route path=":name" element={ <ArticleSinglePage/> } />
-			</Route> 
+			</Route>
+			<Route path="login" element={ <LoginPage/> } />
+			<Route path="create-account" element={ <CreateAccountPage/> } />
 			<Route path="*" element={ <NotFoundPage/> } />
 		</Routes>
 	</Router>
