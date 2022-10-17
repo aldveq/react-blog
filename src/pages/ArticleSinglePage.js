@@ -8,17 +8,22 @@ import { useUser } from "../hooks";
 
 const ArticleSinglePage = () => {
 	const { name } = useParams();
+	const { user } = useUser();
 
 	const [blogData, setBlogData] = useState([]);
 	const [postData, setPostData] = useState({ upvotes: 0, comments: [], title: '', content: '' });
 	const [postNotFound, setPostNotFound] = useState(false);
 	const [loader, setLoader] = useState(true);
 
-	const { user } = useUser();
-
 	useEffect(() => {
 		const fetchPostData = async () => {
-			const [postDataFromServer, data] = await Promise.all([fetch(`/api/posts/${name}`), fetch('/api/posts')]);
+			const token = user && await user.getIdToken();
+			const headers = token ? { authtoken: token } : {};
+			
+			const [postDataFromServer, data] = await Promise.all([
+				fetch(`/api/posts/${name}`, {headers}), 
+				fetch('/api/posts')
+			]);
 			
 			const jsonPostDataFromServer = await postDataFromServer.json();
 
@@ -37,7 +42,7 @@ const ArticleSinglePage = () => {
 			setLoader(false);
 		};
 		fetchPostData();
-	}, [name]);
+	}, [name, user]);
 
 	const drawComments = () => (
 		<>
