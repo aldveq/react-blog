@@ -6,7 +6,10 @@ const UpvoteCounter = ({upvotes, postName, setPostData}) => {
 	const { user } = useUser();
 
 	const addUpvote = async () => {
-		const result = await fetch(`/api/posts/${postName}/upvote`, {method: 'put'});
+		const token = user && await user.getIdToken();
+		const headers = token ? { authtoken: token } : {};
+
+		const result = await fetch(`/api/posts/${postName}/upvote`, {method: 'put'}, null, {headers});
 		const jsonResult = await result.json();
 		setPostData(jsonResult);
 	}
