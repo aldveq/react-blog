@@ -14,18 +14,18 @@ const SignUpForm = () => {
 	const signUp = async (event) => {
 		event.preventDefault();
 
-		if ( email === '' || password === '' || confirmPassword === '') {
+		if ( email?.value === '' || password?.value === '' || confirmPassword?.value === '') {
 			alert('Please, fill out the inputs!');
 			return;
 		}
 
 		try {
-			if ( password !== confirmPassword ) {
+			if ( password?.value !== confirmPassword?.value ) {
 				setError('Password and confirm password do not match!');
 				return;
 			}
 
-			await createUserWithEmailAndPassword(getAuth(), email, password);
+			await createUserWithEmailAndPassword(getAuth(), email?.value, password?.value);
 			setEmail('');
 			setPassword('');
 			setConfirmPassword('');
