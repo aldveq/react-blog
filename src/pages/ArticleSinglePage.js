@@ -8,12 +8,14 @@ import { useUser } from "../hooks";
 
 const ArticleSinglePage = () => {
 	const { name } = useParams();
-	const { user } = useUser();
+	const { user, isLoading } = useUser();
 
 	const [blogData, setBlogData] = useState([]);
-	const [postData, setPostData] = useState({ upvotes: 0, comments: [], title: '', content: '' });
+	const [postData, setPostData] = useState({ upvotes: 0, comments: [], title: '', content: '', canUpvote: false });
 	const [postNotFound, setPostNotFound] = useState(false);
 	const [loader, setLoader] = useState(true);
+
+	const { canUpvote } = postData;
 
 	useEffect(() => {
 		const fetchPostData = async () => {
@@ -32,8 +34,8 @@ const ArticleSinglePage = () => {
 				return;
 			}
 
-			const { upvotes, comments, title, content } = jsonPostDataFromServer;
-			setPostData({ upvotes, comments, title, content });
+			const { upvotes, comments, title, content, canUpvote } = jsonPostDataFromServer;
+			setPostData({ upvotes, comments, title, content, canUpvote });
 
 			const jsonData = await data.json();
 			const moreArticles = jsonData.filter(jData => jData.name !== name);
@@ -41,8 +43,11 @@ const ArticleSinglePage = () => {
 
 			setLoader(false);
 		};
-		fetchPostData();
-	}, [name, user]);
+
+		if (isLoading) {
+			fetchPostData();
+		}
+	}, [name, user, isLoading]);
 
 	const drawComments = () => (
 		<>
@@ -62,7 +67,7 @@ const ArticleSinglePage = () => {
 		<MainWrapper type='body'>
 			<GoBack/>
 			{ postData?.title !== '' ? <Title text={postData?.title} type='main' /> : null }
-			<UpvoteCounter upvotes={postData?.upvotes} postName={name} setPostData={setPostData} />
+			<UpvoteCounter upvotes={postData?.upvotes} postName={name} setPostData={setPostData} canUpvote={canUpvote}/>
 			{ postData?.content !== '' ? <p>{postData?.content}</p> : null }
 			{ postData?.comments.length > 0 ? drawComments() : null }
 			{ user && <AddCommentForm postName={name} setPostData={setPostData}/> }

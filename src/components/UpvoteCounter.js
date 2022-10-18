@@ -1,7 +1,7 @@
 import React from "react";
 import { useUser } from "../hooks";
 
-const UpvoteCounter = ({upvotes, postName, setPostData}) => {
+const UpvoteCounter = ({upvotes, postName, setPostData, canUpvote}) => {
 
 	const { user } = useUser();
 
@@ -17,7 +17,7 @@ const UpvoteCounter = ({upvotes, postName, setPostData}) => {
 	return (
 		<div className="upvote-counter-wrapper">
 			<p>This post has <strong>{upvotes}</strong> upvote(s)!</p>
-			{ user && <button onClick={addUpvote}>Add upvote</button> }
+			{ user && <button onClick={addUpvote}>{ canUpvote ? 'Add upvote' : 'Already upvoted' }</button> }
 		</div>
 	);
 }
