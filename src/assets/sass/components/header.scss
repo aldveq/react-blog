@@ -18,18 +18,33 @@
 	ul li {
 		list-style: none;
 		margin: 0 22px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	ul li a,
+	ul li button {
+		color: $primary-brand-color;
+		font-weight: bold;
+		font-size: 16px;
+		cursor: pointer;
+		padding: 8px;
 	}
 
 	ul li a {
 		text-decoration: none;
-		color: $primary-brand-color;
-		font-weight: bold;
-		padding: 8px;
 		transition: all ease 0.2s;
 
 		&.active {
 			background-color: $primary-brand-color;
 			color: $color-white;
 		}
+	}
+
+	ul li button {
+		border: none;
+		background-color: $fourth-brand-color;
+		color: $color-white;
 	}
 }
