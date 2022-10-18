@@ -8,7 +8,7 @@ import { useUser } from "../hooks";
 
 const ArticleSinglePage = () => {
 	const { name } = useParams();
-	const { user, isLoading } = useUser();
+	const { user } = useUser();
 
 	const [blogData, setBlogData] = useState([]);
 	const [postData, setPostData] = useState({ upvotes: 0, comments: [], title: '', content: '', canUpvote: false });
@@ -44,10 +44,8 @@ const ArticleSinglePage = () => {
 			setLoader(false);
 		};
 
-		if (isLoading) {
-			fetchPostData();
-		}
-	}, [name, user, isLoading]);
+		fetchPostData();
+	}, [name, user]);
 
 	const drawComments = () => (
 		<>
