@@ -28,10 +28,25 @@ const UpvoteCounter = ({upvotes, upvoteUsers, postName, setPostData}) => {
 		setPostData(jsonResult);
 	}
 
+	if ( user && canUserUpvote )
+		return (		
+			<div className="upvote-counter-wrapper">
+				<p>This post has <strong>{upvotes}</strong> upvote(s)!</p>
+				<button onClick={addUpvote}>Add upvote</button>
+			</div>
+		)
+
+	if ( user && !canUserUpvote )
+		return (		
+			<div className="upvote-counter-wrapper">
+				<p>This post has <strong>{upvotes}</strong> upvote(s)!</p>
+				<button>Already upvoted</button>
+			</div>
+		)
+
 	return (
 		<div className="upvote-counter-wrapper">
 			<p>This post has <strong>{upvotes}</strong> upvote(s)!</p>
-			{ user && canUserUpvote ? <button onClick={addUpvote}>Add upvote</button> : <button>Already upvoted</button> }
 		</div>
 	);
 }
