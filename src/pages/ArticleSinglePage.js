@@ -11,11 +11,9 @@ const ArticleSinglePage = () => {
 	const { user } = useUser();
 
 	const [blogData, setBlogData] = useState([]);
-	const [postData, setPostData] = useState({ upvotes: 0, comments: [], title: '', content: '', canUpvote: false });
+	const [postData, setPostData] = useState({ upvotes: 0, comments: [], title: '', content: '', upvoteUsers: [] });
 	const [postNotFound, setPostNotFound] = useState(false);
 	const [loader, setLoader] = useState(true);
-
-	const { canUpvote } = postData;
 
 	useEffect(() => {
 		const fetchPostData = async () => {
@@ -34,8 +32,8 @@ const ArticleSinglePage = () => {
 				return;
 			}
 
-			const { upvotes, comments, title, content, canUpvote } = jsonPostDataFromServer;
-			setPostData({ upvotes, comments, title, content, canUpvote });
+			const { upvotes, comments, title, content, upvoteUsers } = jsonPostDataFromServer;
+			setPostData({ upvotes, comments, title, content, upvoteUsers });
 
 			const jsonData = await data.json();
 			const moreArticles = jsonData.filter(jData => jData.name !== name);
@@ -65,7 +63,7 @@ const ArticleSinglePage = () => {
 		<MainWrapper type='body'>
 			<GoBack/>
 			{ postData?.title !== '' ? <Title text={postData?.title} type='main' /> : null }
-			<UpvoteCounter upvotes={postData?.upvotes} postName={name} setPostData={setPostData} canUpvote={canUpvote}/>
+			<UpvoteCounter upvotes={postData?.upvotes} upvoteUsers={postData?.upvoteUsers} postName={name} setPostData={setPostData} />
 			{ postData?.content !== '' ? <p>{postData?.content}</p> : null }
 			{ postData?.comments.length > 0 ? drawComments() : null }
 			{ user && <AddCommentForm postName={name} setPostData={setPostData}/> }
