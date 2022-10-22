@@ -8,6 +8,25 @@ const Header = () => {
 	const { user } = useUser();
 	const navigate = useNavigate();
 
+	const drawLogoutButton = () => (
+		<li>
+			<button
+				onClick={(e) => {
+					e.preventDefault();
+					signOut(getAuth());
+					navigate('/');
+				}}
+				title='Logout'
+			>Logout</button>
+		</li>
+	);
+
+	const drawLoginButton = () => (
+		<li>
+			<NavLink to='/login' title="Login">Login</NavLink>
+		</li>
+	);
+
 	return (
 		<nav className="nav-wrapper">
 			<MainWrapper type='header'>
@@ -18,28 +37,7 @@ const Header = () => {
 					<li>
 						<NavLink to='/articles' title="Articles">Articles</NavLink>
 					</li>
-					{ 
-						user 
-							? 	<li>
-									<button
-										onClick={(e) => {
-											e.preventDefault();
-											signOut(getAuth());
-											navigate('/');
-										}}
-										title='Logout'
-									>Logout</button>
-								</li>
-							: 
-								<>
-									<li>
-										<NavLink to='/login' title="Login">Login</NavLink>
-									</li>
-									<li>
-										<NavLink to='/create-account' title="SignUp">Sign Up</NavLink>
-									</li>
-								</>
-					}
+					{ user ? drawLogoutButton() : drawLoginButton() }
 				</ul>
 			</MainWrapper>
 		</nav>
