@@ -1,26 +1,102 @@
 .nav-wrapper {
 	width: 100%;
-	padding: 40px 0;
+	padding: 24px 0;
 	background-color: $color-white;
 	border-bottom: 4px solid $primary-brand-color;
 	position: fixed;
 	top: 0;
 	left: 0;
 
+	& .main-wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__logo-text {
+		a {		
+			font-size: 26px;
+			color: $primary-brand-color;
+			text-decoration: none;
+			font-weight: bolder;
+		}
+		span {
+			color: darken($react-logo-color, 15);
+		}
+	}
+
+	&__navigation-container {
+		width: 80%;
+		height: 100vh;
+		position: fixed;
+		top: 0;
+		right: 0;
+		display: flex;
+		flex-direction: column;
+		background-color: $body-color;
+		padding-top: 40px;
+		padding-left: 20px;
+
+		@media only screen and (min-width: 1024px) {
+			all: unset;
+			display: flex;
+		}
+	}
+
+	&__user-container {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		margin-bottom: 20px;
+
+		@media only screen and (min-width: 1024px) {
+			justify-content: center;
+			margin-bottom: 0;
+			padding-right: 20px;
+			margin-right: 10px;
+			border-right: 2px solid $primary-brand-color;
+		}
+
+		p {
+			color: $primary-brand-color;
+			font-weight: bolder;
+			margin: 0;
+			text-align: center;
+
+			span {
+				font-weight: normal;
+				border-bottom: 4px solid $tertiary-brand-color;
+			}
+		}
+	}
+
 	ul {
 		padding: 0;
 		margin: 0;
-		width: 100%;
 		display: flex;
-		justify-content: center;
+		flex-direction: column;
+		align-items: flex-start;
+
+		@media only screen and (min-width: 1024px) {
+			flex-direction: row;
+		}
 	}	
 
 	ul li {
 		list-style: none;
-		margin: 0 22px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		margin-bottom: 16px;
+
+		@media only screen and (min-width: 1024px) {		
+			margin-bottom: 0;
+
+			&:not(:first-child) {
+				margin-left: 22px;
+			}
+		}
+
 	}
 
 	ul li a,
@@ -35,14 +111,38 @@
 	ul li a {
 		text-decoration: none;
 		transition: all ease 0.2s;
+		position: relative;
+		padding-left: 0;
 
-		&.active {
-			background-color: $primary-brand-color;
-			color: $color-white;
+		@media only screen and (min-width: 1024px) {
+			padding-left: 8px;
+		}
+
+		&::after {
+			content: '';
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			background-color: transparent;
+			position: absolute;
+			top: 50%;
+			right: -5px;
+			transform: translateY(-50%);
+
+			@media only screen and (min-width: 1024px) {
+				top: unset;
+				bottom: -2px;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+		}
+
+		&.active::after {
+			background-color: $react-logo-color;
 		}
 	}
 
-	ul li button {
+	ul li button.logout-btn {
 		border: none;
 		background-color: $fourth-brand-color;
 		color: $color-white;
