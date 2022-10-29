@@ -3,8 +3,15 @@
 
 	&__go-back-btn {
 		text-decoration: none;
-		color: $primary-brand-color;
 		font-weight: bold;
+
+		&.light {
+			color: $primary-brand-color;
+		}
+
+		&.dark {
+			color: $color-white;
+		}
 
 		&::before {
 			content: '\2190';

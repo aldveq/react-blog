@@ -5,6 +5,18 @@
 	width: 100%;
 	padding-top: 60px;
 
+	&.light {
+		h3, label, a {
+			color: $primary-brand-color;
+		}
+	}
+
+	&.dark {
+		h3, label, a {
+			color: $color-white;
+		}
+	}
+
 	&__btns-wrapper {
 		display: flex;
 		justify-content: space-between;

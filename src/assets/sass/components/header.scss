@@ -1,11 +1,19 @@
 .nav-wrapper {
 	width: 100%;
 	padding: 24px 0;
-	background-color: $color-white;
-	border-bottom: 4px solid $primary-brand-color;
 	position: fixed;
 	top: 0;
 	left: 0;
+
+	&.light {
+		background-color: $color-white;
+		border-bottom: 4px solid $primary-brand-color;
+	}
+
+	&.dark {
+		background-color: $color-black;
+		border-bottom: 4px solid $color-white;
+	}
 
 	& .main-wrapper {
 		display: flex;
@@ -13,13 +21,25 @@
 		align-items: center;
 	}
 
+	&.light &__logo-text {
+		a {
+			color: $primary-brand-color;
+		}
+	}
+
+	&.dark &__logo-text {
+		a {
+			color: $color-white;
+		}
+	}
+
 	&__logo-text {
 		a {		
 			font-size: 26px;
-			color: $primary-brand-color;
 			text-decoration: none;
 			font-weight: bolder;
 		}
+
 		span {
 			color: darken($react-logo-color, 15);
 		}
@@ -66,6 +86,26 @@
 		}
 	}
 
+	&.light &__user-container {
+		@media only screen and (min-width: 1024px) {
+			border-right: 2px solid $primary-brand-color;
+		}
+
+		p {
+			color: $primary-brand-color;
+		}
+	}
+
+	&.dark &__user-container {
+		@media only screen and (min-width: 1024px) {
+			border-right: 2px solid $color-white;
+		}
+
+		p {
+			color: $color-white;
+		}
+	}
+
 	&__user-container {
 		display: flex;
 		justify-content: flex-start;
@@ -77,11 +117,9 @@
 			margin-bottom: 0;
 			padding-right: 20px;
 			margin-right: 10px;
-			border-right: 2px solid $primary-brand-color;
 		}
 
 		p {
-			color: $primary-brand-color;
 			font-weight: bolder;
 			margin: 0;
 			text-align: center;
@@ -102,6 +140,7 @@
 
 		@media only screen and (min-width: 1024px) {
 			flex-direction: row;
+			align-items: center;
 		}
 	}	
 
@@ -125,9 +164,18 @@
 
 	}
 
+	&.light ul li a,
+	&.light ul li button {
+		color: $primary-brand-color;
+	}
+
+	&.dark ul li a,
+	&.dark ul li button {
+		color: $color-white;
+	}
+
 	ul li a,
 	ul li button {
-		color: $primary-brand-color;
 		font-weight: bold;
 		font-size: 16px;
 		cursor: pointer;
@@ -172,6 +220,22 @@
 		border: none;
 		background-color: $fourth-brand-color;
 		color: $color-white;
+	}
+
+	ul li.theme-icon {
+		cursor: pointer;
+		
+		&.dark {
+			svg {
+				fill: $color-white;
+			}
+		}
+
+		&.light {
+			svg {
+				fill: $primary-brand-color;
+			}
+		}
 	}
 
 	button.close-menu-btn {

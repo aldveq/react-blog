@@ -1,3 +1,13 @@
 .comments-list {
 	padding: 20px 40px 40px;
+
+	&.light p,
+	&.light i {
+		color: $primary-brand-color;
+	}
+
+	&.dark p,
+	&.dark i {
+		color: $color-white;
+	}
 }

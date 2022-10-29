@@ -3,10 +3,15 @@ import { NavLink, useNavigate, Link } from "react-router-dom";
 import MainWrapper from "../containers/MainWrapper";
 import { getAuth, signOut } from "firebase/auth";
 import { useUser } from '../hooks';
-
+import { useTheme, useThemeToggle } from "../context/ThemeProvider";
+import { BsFillSunFill, BsMoonStarsFill } from 'react-icons/bs';
+ 
 const Header = () => {
 	const { user } = useUser();
 	const navigate = useNavigate();
+
+	const isDarkTheme = useTheme();
+	const toggleTheme = useThemeToggle();
 
 	const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
@@ -38,7 +43,7 @@ const Header = () => {
 	);
 
 	return (
-		<nav className="nav-wrapper">
+		<nav className={`nav-wrapper ${ isDarkTheme ? 'dark' : 'light' }`}>
 			<MainWrapper type='header'>
 				<div className="nav-wrapper__logo-text"><Link to='/'><span>React</span>Blog</Link></div>
 				<button 
@@ -58,6 +63,9 @@ const Header = () => {
 						</li>
 						<li onClick={toggleNavMenu}>
 							<NavLink to='/articles' title="Articles">Articles</NavLink>
+						</li>
+						<li onClick={toggleTheme} className={`theme-icon ${ isDarkTheme ? 'dark' : 'light' }`}>
+							{ isDarkTheme ? <BsFillSunFill/> : <BsMoonStarsFill/> }
 						</li>
 						{ user ? drawLogoutButton() : drawLoginButton() }
 					</ul>

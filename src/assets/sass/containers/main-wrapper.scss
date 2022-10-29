@@ -8,8 +8,19 @@
 		padding-top: 0;
 	}
 
+	&.light {
+		p {
+			color: $primary-brand-color;
+		}
+	}
+
+	&.dark {
+		p {
+			color: $color-white;
+		}
+	}
+
 	p {
-		color: $primary-brand-color;
 		letter-spacing: 0.5px;
 		line-height: 30px;
 	}

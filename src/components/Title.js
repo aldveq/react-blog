@@ -1,11 +1,14 @@
-import React from "react";
+import { useTheme } from "../context/ThemeProvider";
 
 const Title = ({text, type}) => {
 
-	if (type === 'secondary') return <h2 className="title">{text}</h2>
+	const isDarkTheme = useTheme();
+	const isTitleDark = isDarkTheme ? 'dark' : 'light';
+
+	if (type === 'secondary') return <h2 className={`title ${isTitleDark}`}>{text}</h2>
 
 	return (
-		<h1 className="title">{text}</h1>
+		<h1 className={`title ${isTitleDark}`}>{text}</h1>
 	)
 }
 

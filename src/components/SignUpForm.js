@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useTheme } from "../context/ThemeProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { useInput } from "../hooks";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignUpForm = () => {
+	const isDarkTheme = useTheme();
 	const [email, setEmail] = useInput('')
 	const [password, setPassword] = useInput('');
 	const [confirmPassword, setConfirmPassword] = useInput('');
@@ -39,7 +41,7 @@ const SignUpForm = () => {
 	}
 
 	return (
-		<div className="add-new-post-form-wrapper">	
+		<div className={`add-new-post-form-wrapper ${ isDarkTheme ? 'dark' : 'light' }`}>	
 			<form className="add-comment-form" onSubmit={signUp}>
 				<h3>Sign Up</h3>
 				{error && <p>{error}</p>}

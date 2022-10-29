@@ -1,7 +1,8 @@
-import React from "react";
+import { useTheme } from "../context/ThemeProvider";
 import { useInput } from "../hooks";
 
 const AddNewPostForm = ({setNewPostForm}) => {
+	const isDarkTheme = useTheme();
 	const [postTitle, setPostTitle] = useInput('');
 	const [postContent, setPostContent] = useInput('');
 
@@ -39,7 +40,7 @@ const AddNewPostForm = ({setNewPostForm}) => {
 	}
 
 	return (
-		<div className="add-new-post-form-wrapper">	
+		<div className={`add-new-post-form-wrapper ${ isDarkTheme ? 'dark' : 'light' }`}>	
 			<form className="add-comment-form" onSubmit={sendPost}>
 				<h3>Add a post</h3>
 				<div className="add-comment-form__form-group">

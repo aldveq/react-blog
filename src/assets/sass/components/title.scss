@@ -1,4 +1,13 @@
 .title {
+
+	&.light {
+		color: $primary-brand-color;
+	}
+
+	&.dark {
+		color: $color-white;
+	}
+
 	border-left: 5px solid $tertiary-brand-color;
 	padding-left: 20px;
 }

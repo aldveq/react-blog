@@ -1,7 +1,9 @@
-import { React } from "react";
+import { useTheme } from "../context/ThemeProvider";
 import CommentItem from './CommentItem';
 
 const CommentsList = ({comments}) => {
+	const isDarkTheme = useTheme();
+
 	const drawComments = () => {
 		return comments.map((comment, index) => (
 			<CommentItem key={`${comment.user}-${index}`} user={comment.user} comment={comment.comment} />
@@ -9,7 +11,7 @@ const CommentsList = ({comments}) => {
 	}
 
 	return (
-		<div className="comments-list">
+		<div className={`comments-list ${isDarkTheme ? 'dark' : 'light'}`}>
 			{drawComments()}
 		</div>
 	)
