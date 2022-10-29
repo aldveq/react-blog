@@ -10,6 +10,12 @@ const Header = () => {
 
 	const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
+	const toggleNavMenu = () => {
+		if ( window.matchMedia("(max-width: 1023px)").matches ) {
+			setIsMobileNavOpen(prevIsMobileNavOpen => !prevIsMobileNavOpen);
+		}
+	}
+
 	const drawLogoutButton = () => (
 		<li>
 			<button
@@ -17,6 +23,7 @@ const Header = () => {
 					e.preventDefault();
 					signOut(getAuth());
 					navigate('/');
+					toggleNavMenu();
 				}}
 				title='Logout'
 				className="logout-btn"
@@ -25,7 +32,7 @@ const Header = () => {
 	);
 
 	const drawLoginButton = () => (
-		<li>
+		<li onClick={toggleNavMenu}>
 			<NavLink to='/login' title="Login">Login</NavLink>
 		</li>
 	);
@@ -36,20 +43,20 @@ const Header = () => {
 				<div className="nav-wrapper__logo-text"><Link to='/'><span>React</span>Blog</Link></div>
 				<button 
 					className="nav-wrapper__open-menu-btn"
-					onClick={() => setIsMobileNavOpen(true)}
+					onClick={toggleNavMenu}
 				>Menu</button>
 				<div className={`nav-wrapper__navigation-container ${ isMobileNavOpen && 'active' }`}>
 					<button 
 						title="Close menu"
 						className="close-menu-btn"
-						onClick={() => setIsMobileNavOpen(false)}
+						onClick={toggleNavMenu}
 					>Close</button>
 					{ user && <div className="nav-wrapper__user-container"><p>Welcome: <span>{user.email}</span></p></div> }
 					<ul>
-						<li>
+						<li onClick={toggleNavMenu}>
 							<NavLink to='/' title="Home">Home</NavLink>
 						</li>
-						<li>
+						<li onClick={toggleNavMenu}>
 							<NavLink to='/articles' title="Articles">Articles</NavLink>
 						</li>
 						{ user ? drawLogoutButton() : drawLoginButton() }
